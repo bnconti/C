@@ -8,7 +8,7 @@ void imprimir_pid(int i) {  // para ir verificando si los procesos se crean corr
 	printf("PPID = %i\n", getppid());
 }
 
-int main(){
+int main() {
 	pid_t hijo, hijo_2, hijo_3;
 	printf("PPID original: %i\n", getpid());
 	for (int i = 1; i<4; i++) {
@@ -17,10 +17,10 @@ int main(){
 			if (hijo == 0) {  // si es el proceso hijo...
 				imprimir_pid(i);
 				exit(0);  // exit para finalizar hijo
-			} else if (hijo != 0) {
+			} else if (hijo != 0) {  // si es el proceso padre...
 				wait(hijo);  // espera al hijo para que no se desorganise todo
 			}
-		} else {
+		} else {  // si estamos en el 2do caso...
 			hijo = fork();
 			if (hijo == 0) {
 				imprimir_pid(i);
